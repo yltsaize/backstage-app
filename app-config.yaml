@@ -102,3 +102,17 @@ catalog:
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
     #   rules:
     #     - allow: [User, Group]
+kubernetes:
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'config'
+      clusters:
+        - url: https://127.0.0.1:34591
+          name: kind-kind
+          authProvider: 'serviceAccount'
+          skipTLSVerify: true
+          skipMetricsLookup: true
+          # export SERVIC_ACCOUNT=readonly
+          # kubectl get secret $(kubectl get serviceaccount $SERVICE_ACCOUNT -o jsonpath={.secrets[0].name}) -o jsonpath={.data.token} | base64 -d
+          serviceAccountToken: REPLACE_WITH_TOKEN

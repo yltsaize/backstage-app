@@ -11,7 +11,10 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: example-website
+  name: example-website-123
+  annotations:
+    backstage.io/kubernetes-id: rundeck
+    backstage.io/kubernetes-namespace: default
 spec:
   type: website
   lifecycle: experimental
